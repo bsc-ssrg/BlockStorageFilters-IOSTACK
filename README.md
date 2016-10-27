@@ -30,4 +30,11 @@ It is not a persistent filter.
 The filter generates a new compressed file system on the persistent device. The compression is done with LZOP, that is very lightweight, but if the block is not compressible by LZOP it tries ZLIB. This behaviour is configurable with some defines. 
 Actually, only CACHE, and BEST are working without issues. All the threaded behaviour is deactivated due to timeouts on the filter framework and bugs, on the other hand it does not produce noticiable benefits compared to the single threaded behaviour.
 
+It uses minilzop library and zlib.
+
+The dirty block feature (to reuse old blocks that had been discarded due to that there is no enough space for a modification of the block, is disabled and not finished). The effect is very low, so it is better to center efforts on other parts. 
+
+BEST define, tries to compress with lzop and zlib and decides which one to use.
+Finally, there is the stats.c code that analyzes the unfiltered device to show some statistics. It is worth to remember thatn 
+
 
